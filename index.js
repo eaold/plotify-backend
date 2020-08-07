@@ -1,3 +1,4 @@
+require('dotenv').config()
 const mongoose = require('mongoose');
 const express = require('express');
 const morgan = require('morgan');
@@ -6,6 +7,7 @@ const cors = require('cors');
 
 const LoginRouter = require('./auth/login');
 const CallbackRouter = require('./auth/callback');
+const UserRouter = require('./users/controller');
 
 
 const app = express();
@@ -16,6 +18,7 @@ app.use(urlencoded({extended: true}));
 
 app.use('/login', LoginRouter);
 app.use('/callback', CallbackRouter);
+app.use('/users', UserRouter)
 
 
 app.get('/', (req, res) => {

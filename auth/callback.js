@@ -11,18 +11,18 @@ router.get("/", (req, res) => {
         grant_type: "authorization_code",
       },
       headers: {
-        Authorization: `Basic ${new Buffer(
-          process.env.CLIENT_ID + ":" + process.env.CLIENT_SECRET
-        ).toString("base64")}`,
+        'Authorization': 'Basic ' + (new Buffer(
+          process.env.CLIENT_ID + ':' + process.env.CLIENT_SECRET
+        ).toString('base64'))
       },
       json: true,
     };
-  
+    
+
     request.post(authOptions, (error, response, body) => {
       const access_token = body.access_token;
-      const uri = process.env.FRONTEND_URI;
-  
-      res.redirect(`${uri}?access_token=${access_token}`);
+        console.log(body.access_token);
+      res.redirect(`${process.env.FRONTEND_URI}?access_token=${access_token}`);
     });
   });
 

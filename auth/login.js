@@ -8,7 +8,7 @@ router.get("/", (req, res) => {
       response_type: "code",
       client_id: process.env.CLIENT_ID,
       scope: "user-read-private user-read-email",
-      redirect_uri: process.env.REDIRECT_URI,
+      redirect_uri: process.env.REDIRECT_URI
     })}`
   );
 });
